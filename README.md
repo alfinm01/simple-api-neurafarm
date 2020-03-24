@@ -14,6 +14,7 @@ Available in Heroku
 [GET] '/users/:id' = Get user by id
 [POST] '/users' = Create new user
 [PUT] '/users/:id' = Edit user info
+[DELETE] '/users/:id' = Delete user
 [POST] '/login' = Get all previously sent messages
 [POST] '/upload-file' = Upload file to cloud storage (such as S3)*
 [POST] '/recover' = Send link to user email for change password
