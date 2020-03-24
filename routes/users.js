@@ -16,7 +16,7 @@ router.get('/:id', async (req, res) => {
 
 /* POST new user. */
 router.post('/', (req, res) => {
-  res.send('respond with a resource')
+  res.send('post something')
 })
 
 /* UPDATE user info. */

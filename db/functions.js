@@ -1,6 +1,7 @@
 var client = require('./db_config')
 
 // await client.connect itu masih belum best practice?
+// masih ada deprecation warning
 
 const function1 = async () => {
   await client.connect()
