@@ -1,14 +1,20 @@
 var express = require('express')
 var router = express.Router()
+var db = require('../db/functions')
 
 /* GET all users. */
 router.get('/', (req, res) => {
-  res.send('respond with a resource')
+  console.log(db)
+  const user = db.function1
+  console.log(user)
+  res.send(user)
 })
 
 /* GET user by id. */
 router.get('/:id', (req, res) => {
-  res.send('respond with a resource')
+  const result = db.function2
+  console.log(result)
+  res.send(result)
 })
 
 /* POST new user. */
