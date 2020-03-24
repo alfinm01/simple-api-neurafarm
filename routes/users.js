@@ -3,17 +3,14 @@ var router = express.Router()
 var db = require('../db/functions')
 
 /* GET all users. */
-router.get('/', (req, res) => {
-  console.log(db)
-  const user = db.function1
-  console.log(user)
+router.get('/', async (req, res) => {
+  const user = await db.function1()
   res.send(user)
 })
 
 /* GET user by id. */
-router.get('/:id', (req, res) => {
-  const result = db.function2
-  console.log(result)
+router.get('/:id', async (req, res) => {
+  const result = await db.function2()
   res.send(result)
 })
 
