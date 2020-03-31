@@ -1,16 +1,16 @@
 var express = require('express')
 var router = express.Router()
-var db = require('../db/functions')
+var User = require('../db/User')
 
 /* GET all users. */
 router.get('/', async (req, res) => {
-  const user = await db.function1()
+  const user = await User.find()
   res.send(user)
 })
 
 /* GET user by id. */
 router.get('/:id', async (req, res) => {
-  const result = await db.function2()
+  const result = await User.create({ username: 'alfin', password: 'oi' })
   res.send(result)
 })
 

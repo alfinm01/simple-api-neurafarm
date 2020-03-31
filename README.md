@@ -15,7 +15,7 @@ Available in Heroku
 [POST] '/users' = Create new user
 [PUT] '/users/:id' = Edit user by id
 [DELETE] '/users/:id' = Delete user by id
-[POST] '/login' = Get all previously sent messages
+[POST] '/login' = Sign in with username and password
 [POST] '/upload-file' = Upload file to cloud storage (such as S3)*
 [POST] '/recover' = Send link to user email for change password
 [POST] '/change-password/:id' = Create new password for user
@@ -32,12 +32,12 @@ Install required dependencies. (Only if there is new packages).
 
 ### `npm start`
 
-Runs the app in the development mode with hot reload.<br />
+Start the app server.<br />
 API will run on [http://localhost:3000](http://localhost:3000).
 
-### `npm start-manual`
+### `npm dev`
 
-Runs the app in the development mode without hot reload.<br />
+Runs the app in the development mode with hot reload.<br />
 API will run on [http://localhost:3000](http://localhost:3000).
 
 ### `npm run lint`
