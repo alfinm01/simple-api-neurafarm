@@ -1,5 +1,7 @@
 var express = require('express')
+const bcrypt = require('bcrypt')
 var router = express.Router()
+var User = require('../models/User')
 
 /* Check if API is live. */
 router.get('/', (req, res) => {
@@ -7,26 +9,37 @@ router.get('/', (req, res) => {
 })
 
 /* Login endpoint. */
-router.post('/login', (req, res) => {
-  res.send('login')
+router.post('/login', async (req, res) => {
+  const user = await User.findOne({ username: req.body.username })
+  if (bcrypt.compare(req.body.password, user.password)) {
+    // Passwords match
+    res.send(user)
+  } else {
+    // Passwords don't match
+    res.send('Wrong username or password')
+  }
 })
 
 /* Upload file endpoint. */
 router.post('/upload-file', (req, res) => {
-  res.send('upload-file')
+  res.send('http://s3.amazonaws.com/bucket/' + req.body.file)
 })
 
 /* Generate link for password recovery. */
-router.post('/recover', (req, res) => {
+router.post('/recover', async (req, res) => {
   // Sending email to user containing link
   // Link is used to change password but with Postman
   // Link is in form of hashed email
-  res.send('Use this link to change your password via Postman or similar application. [POST] /change-password/:id')
+  const user = await User.findOne({ email: req.body.email })
+  console.log(user)
+  res.send('http://localhost:3000/change-password/' + user._id)
 })
 
 /* Change password endpoint. */
-router.post('/change-password/:id', (req, res) => {
-  res.send('Success')
+router.post('/change-password/:id', async (req, res) => {
+  const hashedPassword = await bcrypt.hash(req.body.password, 10)
+  const result = await User.findByIdAndUpdate(req.params.id, { password: hashedPassword })
+  res.send(result)
 })
 
 module.exports = router
