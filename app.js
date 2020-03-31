@@ -19,7 +19,7 @@ app.use('/users', usersRouter)
 
 const uri = 'mongodb+srv://alfinm01:root@cluster0-y7sby.mongodb.net/test?retryWrites=true&w=majority'
 // Later change to process.env.DATABASE_URI
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }) // should not falsing useFindAndModify ? to avoid null value
 
 // Get the default connection
 var db = mongoose.connection
